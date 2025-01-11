@@ -1,217 +1,244 @@
 # CHAT2API
 
-🤖 一个简单的 ChatGPT TO API 代理
+🤖 It's a simple ChatGPT TO API proxy.
 
-🌟 无需账号即可使用免费、无限的 `GPT-3.5`
+🌟 You'll get free, unlimited access to GPT-3.5 without having to create an account.
 
-💥 支持 AccessToken 使用账号，支持 `O1-Preview/mini`、`GPT-4`、`GPT-4o/mini`、 `GPTs`
+💥 Supports AccessToken with an account, supports `O1-Preview/mini`, `GPT-4`, `GPT-4o/mini`, `GPTs`
 
-🔍 回复格式与真实 API 完全一致，适配几乎所有客户端
+🔍 The response format is exactly the same as the real API, and it's compatible with almost all clients.
 
-👮 配套用户管理端[Chat-Share](https://github.com/h88782481/Chat-Share)使用前需提前配置好环境变量（ENABLE_GATEWAY设置为True，AUTO_SEED设置为False）
+👮 The matching user management terminal [Chat-Share] (https://github.com/h88782481/Chat-Share) needs to have the environment variables configured in advance (ENABLE_GATEWAY set to True and AUTO_SEED set to False) before use.
 
 
-## 交流群
+## Communication group
 
-[https://t.me/chat2api](https://t.me/chat2api)
+[https://t.me/chat2api] (https://t.me/chat2api)
 
-要提问请先阅读完仓库文档，尤其是常见问题部分。
+Please read the repository documentation in its entirety, especially the FAQ section, before asking a question.
 
-提问时请提供：
+When asking a question, please include:
 
-1. 启动日志截图（敏感信息打码，包括环境变量和版本号）
-2. 报错的日志信息（敏感信息打码）
-3. 接口返回的状态码和响应体
+1. A screenshot of the startup log (encode sensitive information, including environment variables and version numbers)
+2. The error reporting log information (encode sensitive information)
+3. The status code and response body returned by the interface
 
-## 赞助商
+## Sponsor
 
-感谢 Capsolver 对本项目的赞助，对于市面上任何人机验证码，你可以使用 [Capsolver](https://www.capsolver.com/zh?utm_source=github&utm_medium=repo&utm_campaign=scraping&utm_term=chat2api) 来解决
+Thanks to Capsolver for sponsoring this project.For any human-machine verification codes on the market, you can use Capsolver to solve any problems you might have.
 
 [![Capsolver](docs/capsolver.png)](https://www.capsolver.com/zh?utm_source=github&utm_medium=repo&utm_campaign=scraping&utm_term=chat2api)
 
-## 功能
+## Function
 
-### 最新版本号存于 `version.txt`
+The latest version number is stored in "version.txt."
 
-### 逆向API 功能
-> - [x] 流式、非流式传输
-> - [x] 免登录 GPT-3.5 对话
-> - [x] GPT-3.5 模型对话（传入模型名不包含 gpt-4，则默认使用 gpt-3.5，也就是 text-davinci-002-render-sha）
-> - [x] GPT-4 系列模型对话（传入模型名包含: gpt-4，gpt-4o，gpt-4o-mini，gpt-4-moblie 即可使用对应模型，需传入 AccessToken）
-> - [x] O1 系列模型对话（传入模型名包含 o1-preview，o1-mini 即可使用对应模型，需传入 AccessToken）
-> - [x] GPT-4 模型画图、代码、联网
-> - [x] 支持 GPTs（传入模型名：gpt-4-gizmo-g-*）
-> - [x] 支持 Team Plus 账号（需传入 team account id）
-> - [x] 上传图片、文件（格式为 API 对应格式，支持 URL 和 base64）
-> - [x] 可作为网关使用，可多机分布部署
-> - [x] 多账号轮询，同时支持 `AccessToken` 和 `RefreshToken`
-> - [x] 请求失败重试，自动轮询下一个 Token
-> - [x] Tokens 管理，支持上传、清除
-> - [x] 定时使用 `RefreshToken` 刷新 `AccessToken` / 每次启动将会全部非强制刷新一次，每4天晚上3点全部强制刷新一次。
-> - [x] 支持文件下载，需要开启历史记录
-> - [x] 支持 `O1-Preview/mini` 模型推理过程输出
+### Reverse API functions
+> - [x] Streaming and non-streaming transfer
+Login-free GPT-3.5 dialogue
+GPT-3.5 model dialogue (if the model name isn't passed in and doesn't contain gpt-4, gpt-3.5 is used by default, which is text-davinci-002-render-sha).
+And finally, if you want to use GPT-4, you'll need to pass in the model name (like gpt-4, gpt-4o, gpt-4o-mini, or gpt-4-mobile) and an AccessToken.
+And for the O1 series model, you'll need to pass in the model name to include o1-preview or o1-mini, and you'll also need an AccessToken.
+Then there's GPT-4 model drawing, coding, and networking.
+Support for GPTs is also available (pass in model name: gpt-4-gizmo-g-*)
+Support for Team Plus accounts is also required (team account ID required).
+You can also upload images and files (in formats compatible with the API, including URLs and base64).
+It can be used as a gateway and deployed across multiple machines.
+It can poll for multiple accounts, supporting both AccessToken and RefreshToken.
+It can retry failed requests and automatically poll for the next token.
+It's got token management, support for uploading and clearing tokens.
+It'll refresh your AccessToken every few days with a RefreshToken, and you can choose to refresh it manually whenever you want, or have it refresh on its own every four days at 3:00 p.m.
+We'll need to enable history to support file download.
+[x] Allow for the preview of the O1-Preview/mini model's output from the inference process
 
-### 官网镜像 功能
-> - [x] 支持官网原生镜像
-> - [x] 后台账号池随机抽取，`Seed` 设置随机账号
-> - [x] 输入 `RefreshToken` 或 `AccessToken` 直接登录使用
-> - [x] 支持 O1-Preview/mini、GPT-4、GPT-4o/mini
-> - [x] 敏感信息接口禁用、部分设置接口禁用
-> - [x] /login 登录页面，注销后自动跳转到登录页面
-> - [x] /?token=xxx 直接登录, xxx 为 `RefreshToken` 或 `AccessToken` 或 `SeedToken` (随机种子)
+Official website mirroring function
+> - [x] Support native mirroring of the official website
+The background account pool is randomly selected, and the "Seed" is set to a random account.
+> - [x] Enter `RefreshToken` or `AccessToken` to log in directly
+Support O1-Preview/mini, GPT-4, GPT-4o/mini.
+And finally, we'll disable sensitive information interfaces and some setting interfaces.
+- [x] /login login page, automatically jump to the login page after logging out
+- [x] Use /?token=xxx to log in directly. xxx is `RefreshToken`, `AccessToken`, or `SeedToken` (random seed)
 
 
-> TODO
-> - [ ] 镜像支持 `GPTs`
-> - [ ] 暂无，欢迎提 `issue`
+TODO:
+- [ ] Mirroring support for GPTs
+We don't have mirroring support for GPTs yet, but please raise an issue if you have any questions.
 
-## 逆向API
+## Reverse API
 
-完全 `OpenAI` 格式的 API ，支持传入 `AccessToken` 或 `RefreshToken`，可用 GPT-4, GPT-4o, GPTs, O1-Preview, O1-Mini：
+It's fully OpenAI format API, supports passing in AccessToken or RefreshToken, and is available for GPT-4, GPT-4o, GPTs, O1-Preview, and O1-Mini.
 
-```bash
-curl --location 'http://127.0.0.1:5005/v1/chat/completions' \
---header 'Content-Type: application/json' \
---header 'Authorization: Bearer {{Token}}' \
+[ ] We don't have mirroring support for GPTs yet, but if you need it, please raise an issue.
+[ ] The reverse API is fully openAI format. You can use an AccessToken or a RefreshToken. It's available for GPT-4, GPT-4o, GPTs, and O1-Preview, and O1-Mini.
+curl --location 'http://127.0.0.1:5005/v1/chat/completions'
+--header 'Content-Type: application/json'
+--header 'Authorization: Bearer ' .token .
 --data '{
      "model": "gpt-3.5-turbo",
-     "messages": [{"role": "user", "content": "Say this is a test!"}],
+     "messages": [{"role": 'user', 'content': 'Say this is a test!'}],
      "stream": true
-   }'
-```
+   )"
+Then, add "stream": true.
 
-将你账号的 `AccessToken` 或 `RefreshToken` 作为 `{{ Token }}` 传入。
-也可填写你设置的环境变量 `Authorization` 的值, 将会随机选择后台账号
+Pass in your account's AccessToken or RefreshToken as Token.
+You can also fill in the value of the environment variable "Authorization" that you set, and a background account will be selected at random.
 
-如果有team账号，可以传入 `ChatGPT-Account-ID`，使用 Team 工作区：
+If you have a team account, you can pass in the `ChatGPT-Account-ID` to use the team workspace.
 
-- 传入方式一：
-`headers` 中传入 `ChatGPT-Account-ID`值
+Method 1:
+Pass in the `ChatGPT-Account-ID` value in headers.
 
-- 传入方式二：
-`Authorization: Bearer <AccessToken 或 RefreshToken>,<ChatGPT-Account-ID>`
+- Method 2:
+`Authorization: Bearer <AccessToken or RefreshToken>,<ChatGPT-Account-ID>`
 
-如果设置了 `AUTHORIZATION` 环境变量，可以将设置的值作为 `{{ Token }}` 传入进行多 Tokens 轮询。
+If the AUTHORIZATION environment variable is set, the set value can be passed in as "Token" for multi-token polling.
 
-> - `AccessToken` 获取: chatgpt官网登录后，再打开 [https://chatgpt.com/api/auth/session](https://chatgpt.com/api/auth/session) 获取 `accessToken` 这个值。
-> - `RefreshToken` 获取: 此处不提供获取方法。
-> - 免登录 gpt-3.5 无需传入 Token。
+For AccessToken acquisition, after logging in to the chatgpt official website, open [https://chatgpt.com/api/auth/session] to obtain the value of AccessToken.
+The method for acquiring a refresh token isn't included here.
+Login-free gpt-3.5 doesn't require a Token.
 
-## Tokens 管理
+## Tokens management
 
-1. 配置环境变量 `AUTHORIZATION` 作为 `授权码` ，然后运行程序。
+1. Set the environment variable `AUTHORIZATION` as the `authorization code` and then run the program.
 
-2. 访问 `/tokens` 或者 `/{api_prefix}/tokens` 可以查看现有 Tokens 数量，也可以上传新的 Tokens ，或者清空 Tokens。
+2. Go to `/tokens` or `/{api_prefix}/tokens` to see the number of existing tokens, upload new tokens, or clear tokens.
 
-3. 请求时传入 `AUTHORIZATION` 中配置的 `授权码` 即可使用轮询的Tokens进行对话
+3. Pass in the "authorization code" configured in "AUTHORIZATION" when requesting to use the polled tokens for conversation.
 
-![tokens.png](docs/tokens.png)
+![tokens.png] (docs/tokens.png)
 
-## 官网原生镜像
+## Official website native image
 
-1. 配置环境变量 `ENABLE_GATEWAY` 为 `true`，然后运行程序, 注意开启后别人也可以直接通过域名访问你的网关。
+First, set the environment variable ENABLE_GATEWAY to true and then run the program. Keep in mind that after it's enabled, others can also access your gateway directly through the domain name.
 
-2. 在 Tokens 管理页面上传 `RefreshToken` 或 `AccessToken`
+Next, upload the refresh token or access token on the tokens management page.
 
-3. 访问 `/login` 到登录页面
+Then, visit the login page at "/login."
 
-![login.png](docs/login.png)
+![login.png]
 
-4. 进入官网原生镜像页面使用
+Then go to the native mirror page of the official website and use
 
-![chatgpt.png](docs/chatgpt.png)
+![chatgpt.png]
 
-## 环境变量
+## Environment variables
 
-每个环境变量都有默认值，如果不懂环境变量的含义，请不要设置，更不要传空值，字符串无需引号。
+Each environment variable has a default value, so if you're not sure what it means, don't set it or pass an empty value. Also, strings don't need to be quoted.
 
-| 分类   | 变量名               | 示例值                                                         | 默认值                   | 描述                                                           |
-|------|-------------------|-------------------------------------------------------------|-----------------------|--------------------------------------------------------------|
-| 安全相关 | API_PREFIX        | `your_prefix`                                               | `None`                | API 前缀密码，不设置容易被人访问，设置后需请求 `/your_prefix/v1/chat/completions` |
-|      | AUTHORIZATION     | `your_first_authorization`,<br/>`your_second_authorization` | `[]`                  | 你自己为使用多账号轮询 Tokens 设置的授权码，英文逗号分隔                             |
-|      | AUTH_KEY          | `your_auth_key`                                             | `None`                | 私人网关需要加`auth_key`请求头才设置该项                                    |
-| 请求相关 | CHATGPT_BASE_URL  | `https://chatgpt.com`                                       | `https://chatgpt.com` | ChatGPT 网关地址，设置后会改变请求的网站，多个网关用逗号分隔                           |
-|      | PROXY_URL         | `http://ip:port`,<br/>`http://username:password@ip:port`    | `[]`                  | 全局代理 URL，出 403 时启用，多个代理用逗号分隔                                 |
-|      | EXPORT_PROXY_URL  | `http://ip:port`或<br/>`http://username:password@ip:port`    | `None`                | 出口代理 URL，防止请求图片和文件时泄漏源站 ip                                   |
-| 功能相关 | HISTORY_DISABLED  | `true`                                                      | `true`                | 是否不保存聊天记录并返回 conversation_id                                 |
-|      | POW_DIFFICULTY    | `00003a`                                                    | `00003a`              | 要解决的工作量证明难度，不懂别设置                                            |
-|      | RETRY_TIMES       | `3`                                                         | `3`                   | 出错重试次数，使用 `AUTHORIZATION` 会自动随机/轮询下一个账号                      |
-|      | CONVERSATION_ONLY | `false`                                                     | `false`               | 是否直接使用对话接口，如果你用的网关支持自动解决 `POW` 才启用                           |
-|      | ENABLE_LIMIT      | `true`                                                      | `true`                | 开启后不尝试突破官方次数限制，尽可能防止封号                                       |
-|      | UPLOAD_BY_URL     | `false`                                                     | `false`               | 开启后按照 `URL+空格+正文` 进行对话，自动解析 URL 内容并上传，多个 URL 用空格分隔           |
-|      | SCHEDULED_REFRESH | `false`                                                     | `false`               | 是否定时刷新 `AccessToken` ，开启后每次启动程序将会全部非强制刷新一次，每4天晚上3点全部强制刷新一次。  |
-|      | RANDOM_TOKEN      | `true`                                                      | `true`                | 是否随机选取后台 `Token` ，开启后随机后台账号，关闭后为顺序轮询                         |
-| 网关功能 | ENABLE_GATEWAY    | `false`                                                     | `false`               | 是否启用网关模式，开启后可以使用镜像站，但也将会不设防                                  |
-|      | AUTO_SEED          | `false`                                                     | `true`               | 是否启用随机账号模式，默认启用，输入`seed`后随机匹配后台`Token`。关闭之后需要手动对接接口，来进行`Token`管控。    |
+[cat-] Category [var-] Variable name [ex-] Example value [val-] Default value [des-] Description [cat-]
+4. Go to the native mirror page of the official website and use ![chatgpt.png] (docs/chatgpt.png)
+## Environment Variables
+Each environment variable has a default value. If you don't understand the meaning of the environment variable, don't set it and don't pass an empty value. Strings don't need to be quoted.
+| Category | Variable name | Example value | Default value | Description |
+|------|-----------------|----------------------------------|----------------------------------|----------------------------------|
+[chatgpt.png] (docs/chatgpt.png)
+## Environment variables
+Each environment variable has a default value. If you don't understand the meaning of the environment variable, don't set it, and don't pass an empty value. Strings don't need to be quoted.
+[category] [variable name] [example value] [default value] [description]
+| Security-related | API_PREFIX | `your_prefix` | `None` | API prefix password. If not set, it's easy for others to access it. After setting, you need to request /your_prefix/v1/chat/completions.
+Security-related stuff:
+API_PREFIX: Set your API prefix password here. If you don't set one, it'll be easy for others to access it. After setting it, you'll need to request /your_prefix/v1/chat/completions.
+AUTHORIZATION: Set your authorization codes for polling tokens using multiple accounts. Separate them with commas.
+Here's the authorization key: `your_auth_key`. If you're using private gateways, you'll need to set the auth_key request header to set this item.
+Here are some request-related settings:
+-	CHATGPT_BASE_URL: https://chatgpt.com
+-	AUTH_KEY: your_auth_key
 
-## 部署
+The CHATGPT_BASE_URL setting changes the requested website. Multiple gateways separated by commas are supported.
+Here's what you need to know about the Auth Key request header:
+-	It's set to "None" by default.
+-	If you're using private gateways, you'll need to set this to your Auth Key.
+-	The request-related setting is set to "CHATGPT_BASE_URL" by default.
+-	It's set to "https://chatgpt.com" here.
+-	If you want to change the website that's requested, you can set the setting to multiple gateways separated by commas.
+-	If you want to enable a global proxy URL, set the setting to "PROXY_URL" and enter "http://ip:port" or "http://username:password@ip:port".
+-	If you want to use multiple proxies, set the setting to "PROXY_URL" and enter "[]" here.
+Here's what you need to know about the EXPORT_PROXY_URL: it's set to `http://ip:port` or `http://username:password@ip:port` by default. If you want to prevent the origin server IP address from being leaked when requesting images and files, set it to `None`.
+Function-related: HISTORY_DISABLED = true; return the conversation ID and don't save chat history.
+Here are some more details on the export proxy URL: it can be set to either "http://ip:port" or "http://username:password@ip:port" and it's set to "None" by default. This is to prevent the origin server IP address from being leaked when images and files are requested.
+There's also a function-related setting called HISTORY_DISABLED, which is set to "true" by default. This means that chat history won't be saved and the conversation ID will be returned.
+The difficulty of the proof of work to be solved is set to "00003a" by default. If you don't understand this, don't set it.
+Function-related: HISTORY_DISABLED: Whether to disable chat history and return the conversation ID. POW_DIFFICULTY: The difficulty of the proof of work to be solved. Set to 00003a by default. RETRY_TIMES: The number of retries in case of an error. Using AUTHORIZATION will automatically randomize/poll the next account.
+| CONVERSATION_ONLY | `false` | `false` | Whether to use the conversation interface directly. If the gateway you're using supports automatic POW resolution, enable it.
+You can set the retry times to 3 and the conversation-only setting to false. This will let you use the conversation interface directly. If your gateway supports automatic POW resolution, enable it. Also, enable the ENABLE_LIMIT setting to true. This will prevent you from exceeding the official limit of times and will help prevent a ban.
+| UPLOAD_BY_URL | `false` | `false` | Whether to use the conversation interface directly. If the gateway you're using supports automatic POW resolution, enable it. | ENABLE_LIMIT | `true` | `true` | After being enabled, it won't try to exceed the official limit of times and will prevent being banned as much as possible. | UPLOAD_BY_URL | `false` | `false` | After being enabled, the conversation will be carried out according to URL+space+body. The content of the URL will be parsed automatically and uploaded, and multiple URLs will be separated by spaces.
+| SCHEDULED_REFRESH | `false` | `false` | Whether to refresh the Access Token regularly. If enabled, the Access Token will be refreshed once every time the program is started and once every four days at 3:00 p.m.
+The RANDOM_TOKEN setting determines whether to randomly select the background token. When this setting is enabled, the background account is randomly selected. When disabled, the polling is in order.
+Gateway function: ENABLE_GATEWAY: Whether to enable gateway mode. If it's turned on, you can use the mirror site, but it won't be protected.
+| AUTO_SEED: Whether to enable random account mode. It's enabled by default. After entering a seed, the background token is randomly matched. After it's turned off, you need to manually connect to the interface to control the token.
 
-### Zeabur 部署
+| ENABLE_GATEWAY: Whether to enable gateway mode. After it's turned on, you can use the mirror site, but it won't be protected.
 
-[![Deploy on Zeabur](https://zeabur.com/button.svg)](https://zeabur.com/templates/6HEGIZ?referralCode=LanQian528)
+| AUTO_SEED: Whether to enable random account mode. It's enabled by default. After entering a seed, the background token is randomly matched. After it's turned off, you need to manually connect to the interface to control the token.
 
-### 直接部署
+## Deployment
 
-```bash
+### Zeabur deployment
+
+[![Deploy on Zeabur: https://zeabur.com/button.svg]() https://zeabur.com/templates/6HEGIZ?referralCode=LanQian528
+
+### Direct deployment
+
+Then just run this command: bash
 git clone https://github.com/LanQian528/chat2api
 cd chat2api
 pip install -r requirements.txt
-python app.py
-```
+Then, run "python app.py"
+Then, you can cd to chat2api and run pip install -r requirements.txt python app.py.
 
-### Docker 部署
+### Docker deployment
 
-您需要安装 Docker 和 Docker Compose。
+You'll need to install Docker and Docker Compose.
 
-```bash
-docker run -d \
-  --name chat2api \
-  -p 5005:5005 \
+Then, you'll need to install Docker and Docker Compose.
+docker run -d
+  --name chat2api
+  -p 5005:5005
   lanqian528/chat2api:latest
-```
+Then, you can use the following command:
 
-### (推荐，可用 PLUS 账号) Docker Compose 部署
+### (Recommended, available with PLUS account) Docker Compose deployment
 
-创建一个新的目录，例如 chat2api，并进入该目录：
+Create a new directory, for example chat2api, and go to that directory:
 
-```bash
+Then, you'll need to run the following command:
 mkdir chat2api
 cd chat2api
-```
+Then, go to the chat2api directory and run the following command:
 
-在此目录中下载库中的 docker-compose.yml 文件：
+Then, download the docker-compose.yml file from the repository in this directory:
 
-```bash
-wget https://raw.githubusercontent.com/LanQian528/chat2api/main/docker-compose-warp.yml
-```
+Then, you can run the following command:
+Then, get this file: https://raw.githubusercontent.com/LanQian528/chat2api/main/docker-compose-warp.yml
+Then, modify the environment variables in the docker-compose-warp.yml file and save it.
 
-修改 docker-compose-warp.yml 文件中的环境变量，保存后：
+Modify the environment variables in the docker-compose-warp.yml file, and save it.
 
-```bash
+Then, save the file as docker-compose-warp.yml.
 docker-compose up -d
-```
+Then, save the file as docker-compose-warp.yml.
 
 
-## 常见问题
+## Frequently Asked Questions
 
-> - 错误代码：
->   - `401`：当前 IP 不支持免登录，请尝试更换 IP 地址，或者在环境变量 `PROXY_URL` 中设置代理，或者你的身份验证失败。
->   - `403`：请在日志中查看具体报错信息。
->   - `429`：当前 IP 请求1小时内请求超过限制，请稍后再试，或更换 IP。
->   - `500`：服务器内部错误，请求失败。
->   - `502`：服务器网关错误，或网络不可用，请尝试更换网络环境。
+> - Error codes:
+- `401`: The current IP address doesn't support log-in-free access. Try again using a different IP address, or set a proxy in the environment variable `PROXY_URL`. Otherwise, your authentication may have failed.
+If you see a `403` error, check the log for more details.
+If you see a code of 429, it means the current IP has tried to access more than the limit within the last hour. You can try again later or change the IP.
+If you see a 500 error, that means there's been an internal server error and the request failed.
+If you see a 502 error, that means the server gateway is having problems or the network is down. In that case, try switching networks.
 
-> - 已知情况：
->   - 日本 IP 很多不支持免登，免登 GPT-3.5 建议使用美国 IP。
->   - 99%的账号都支持免费 `GPT-4o` ，但根据 IP 地区开启，目前日本和新加坡 IP 已知开启概率较大。
+Here are some known issues:
+Many Japanese IPs don't support free login, and GPT-3.5 recommends using a US IP for free login.
+99% of accounts support free "GPT-4o," but it's enabled based on the IP region, and right now, Japanese and Singaporean IPs are known to have a higher probability of being enabled.
 
-> - 环境变量 `AUTHORIZATION` 是什么？
->   - 是一个自己给 chat2api 设置的一个身份验证，设置后才可使用已保存的 Tokens 轮询，请求时当作 `APIKEY` 传入。
-> - AccessToken 如何获取？
->   - chatgpt官网登录后，再打开 [https://chatgpt.com/api/auth/session](https://chatgpt.com/api/auth/session) 获取 `accessToken` 这个值。
+And finally, what's the deal with the environment variable AUTHORIZATION?
+It's an authentication set by chat2api itself, and after setting it, you can use the saved tokens to poll and pass it as APIKEY during the request.
+And how do I get the AccessToken?
+After logging in to the chatgpt website, open [https://chatgpt.com/api/auth/session] to get the value of `accessToken`.
 
 
 ## License
 
 MIT License
-
